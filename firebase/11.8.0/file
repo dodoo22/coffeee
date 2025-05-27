@@ -1,0 +1,5 @@
+touch firebase/11.8.0/firebase-analytics-compat.js
+touch firebase/11.8.0/firebase-remote-config-compat.js
+touch firebase/11.8.0/firebase-performance-compat.js
+touch firebase/11.8.0/firebase-functions-compat.js
+touch firebase/11.8.0/firebase-storage-compat.js

@@ -1,0 +1,1 @@
+console.log("Firebase init script loaded, but not used - safe to ignore");

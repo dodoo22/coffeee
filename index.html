@@ -1,0 +1,1942 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>中壢咖啡廳推薦</title>
+  <meta name="description" content="探索中壢三家必訪的咖啡廳，享受美味咖啡與舒適氛圍。">
+  <meta name="keywords" content="中壢, 咖啡廳, 推薦, 美食, 咖啡">
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Amatic+SC:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Main CSS File -->
+  <link href="assets/css/main.css" rel="stylesheet">
+
+  <style>
+    /* 美化咖啡廳分類區塊 */
+#cafeTabs {
+  display: flex;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  margin-bottom: 40px;
+}
+
+#cafeTabs .nav-item {
+  margin: 0 5px;
+}
+
+#cafeTabs .nav-link {
+  color: #444;
+  font-weight: 500;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 30px;
+  background-color: #f8f9fa;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+#cafeTabs .nav-link.active {
+  color: white;
+  background-color: #ce1212;
+  box-shadow: 0 3px 10px rgba(206, 18, 18, 0.2);
+}
+
+#cafeTabs .nav-link:hover:not(.active) {
+  background-color: #eeeeee;
+  color: #333;
+  transform: translateY(-2px);
+}
+
+/* 設置咖啡廳容器樣式 */
+.menu .tab-content {
+  padding-top: 20px;
+}
+
+.menu .tab-pane .row {
+  max-height: 600px; /* 控制高度，約可顯示 3 個咖啡廳 */
+  overflow-y: auto;
+  padding-right: 10px;
+  margin-top: 20px;
+}
+
+/* 美化咖啡廳卡片 */
+.menu-item {
+  margin-bottom: 30px;
+  background-color: white;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: all 0.3s ease;
+  height: 450px; /* 固定高度 */
+  display: flex;
+  flex-direction: column;
+}
+
+.menu-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.menu-img {
+  height: 220px;
+  object-fit: cover;
+  width: 100%;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.menu-item h4 {
+  padding: 20px 20px 10px 20px;
+  margin: 0;
+  font-size: 18px;
+}
+
+.menu-item h4 a {
+  color: #333;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.menu-item h4 a:hover {
+  color: #ce1212;
+}
+
+.menu-item .ingredients {
+  padding: 0 20px;
+  margin-bottom: 10px;
+  color: #666;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* 自定義滾動條 */
+.menu .tab-pane .row::-webkit-scrollbar {
+  width: 6px;
+}
+
+.menu .tab-pane .row::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+.menu .tab-pane .row::-webkit-scrollbar-thumb {
+  background: #ce1212;
+  border-radius: 10px;
+}
+
+.menu .tab-pane .row::-webkit-scrollbar-thumb:hover {
+  background: #ec2727;
+}
+
+/* AI 助手按鈕 */
+.ai-assistant-btn {
+  position: fixed;
+  top: 100px;
+  right: 30px;
+  width: 60px;
+  height: 60px;
+  background-color: #ce1212;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(206, 18, 18, 0.2);
+  cursor: move;
+  z-index: 9999;
+  transition: all 0.3s ease;
+  user-select: none;
+  touch-action: none;
+}
+
+.ai-assistant-btn:hover {
+  transform: scale(1.1);
+  background-color: #ec2727;
+  box-shadow: 0 6px 16px rgba(206, 18, 18, 0.3);
+}
+
+.ai-assistant-btn i {
+  color: #fff;
+  font-size: 26px;
+}
+
+/* AI 助手對話框 */
+.ai-assistant-dialog {
+  position: fixed;
+  bottom: 80px;
+  right: 30px;
+  width: 350px;
+  height: 500px;
+  background-color: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  z-index: 9998;
+  display: none;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid rgba(206, 18, 18, 0.1);
+}
+
+.ai-assistant-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 20px;
+  background-color: #ce1212;
+  color: #fff;
+}
+
+.ai-assistant-header h3 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 500;
+  color: #fff;
+}
+
+.ai-assistant-close {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.ai-assistant-body {
+  flex-grow: 1;
+  padding: 15px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.ai-message, .user-message {
+  max-width: 80%;
+  padding: 10px 14px;
+  border-radius: 18px;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.ai-message {
+  align-self: flex-start;
+  background-color: #f5f5f5;
+  color: #333;
+  border: 1px solid #eee;
+}
+
+.user-message {
+  align-self: flex-end;
+  background-color: #ce1212;
+  color: white;
+}
+
+.ai-thinking {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  align-self: flex-start;
+  padding: 8px 14px;
+  background-color: #f5f5f5;
+  border-radius: 18px;
+  border: 1px solid #eee;
+}
+
+.ai-thinking span {
+  width: 8px;
+  height: 8px;
+  background-color: rgba(206, 18, 18, 0.5);
+  border-radius: 50%;
+  animation: thinking 1.4s infinite ease-in-out;
+}
+
+.ai-thinking span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.ai-thinking span:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes thinking {
+  0%, 100% {
+    transform: scale(0.6);
+    opacity: 0.6;
+  }
+  50% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.ai-assistant-input {
+  display: flex;
+  align-items: center;
+  padding: 10px 15px;
+  border-top: 1px solid #e0e0e0;
+}
+
+.ai-assistant-input input {
+  flex-grow: 1;
+  border: none;
+  outline: none;
+  padding: 10px;
+  font-size: 14px;
+  background-color: #f5f5f5;
+  border-radius: 20px;
+}
+
+.ai-assistant-input button {
+  background: none;
+  border: none;
+  color: #ce1212;
+  margin-left: 10px;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.ai-assistant-input button:hover {
+  color: #ec2727;
+}
+    .record-item {
+      margin-bottom: 30px;
+      padding: 20px;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      height: 100%;
+    }
+    .record-img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 15px;
+    }
+    .user-feedback {
+      margin: 10px 0;
+      font-style: italic;
+      color: #444;
+    }
+    .date {
+      color: #777;
+      font-size: 0.9em;
+    }
+    .btn-submit-feedback {
+      background: #ce1212;
+      border: 0;
+      padding: 12px 40px;
+      color: #fff;
+      transition: 0.4s;
+      border-radius: 50px;
+    }
+    .btn-submit-feedback:hover {
+      background: #ec2727;
+    }
+
+    /* 心得輪播卡片樣式 */
+.record-carousel {
+  padding-bottom: 50px;
+  position: relative;
+}
+
+.record-carousel .swiper-slide {
+  height: auto;
+}
+
+.record-carousel .record-item {
+  margin-bottom: 0;
+  height: auto;  /* 改為自適應高度，而非固定高度 */
+  min-height: 450px;  /* 設置最小高度，保持卡片一致性 */
+  transition: transform 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;  /* 添加內部間距 */
+}
+
+.record-carousel .record-item:hover {
+  transform: translateY(-5px);
+}
+
+.record-carousel .swiper-pagination-bullet-active {
+  background-color: #ce1212;
+}
+
+.record-carousel .swiper-button-next, 
+.record-carousel .swiper-button-prev {
+  color: #ce1212;
+}
+
+.record-carousel .swiper-button-next:hover, 
+.record-carousel .swiper-button-prev:hover {
+  color: #ec2727;
+}
+
+.record-content {
+  flex-grow: 1;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  margin-top: 15px;  /* 與圖片保持距離 */
+}
+
+/* 確保日期顯示完整 */
+.record-carousel .record-item .date {
+  margin-top: 10px;  /* 增加與內容的間距 */
+  margin-bottom: 10px;  /* 增加底部間距 */
+  color: #777;
+  font-size: 0.9em;
+  word-break: keep-all;  /* 防止日期被斷行 */
+  white-space: nowrap;  /* 日期保持在一行 */
+}
+
+/* 確保刪除按鈕在日期下方，而不是疊在一起 */
+.record-actions {
+  margin-top: 10px;  /* 增加與日期的距離 */
+  text-align: right;
+}
+
+/* 篩選器樣式 */
+.filter-container {
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.filter-container label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+  color: #333;
+}
+
+.filter-container select,
+.filter-container input {
+  width: 100%;
+  padding: 10px 15px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  background-color: #fff;
+  transition: all 0.3s ease;
+}
+
+.filter-container select:focus,
+.filter-container input:focus {
+  border-color: #ce1212;
+  box-shadow: 0 0 0 2px rgba(206, 18, 18, 0.1);
+  outline: none;
+}
+
+.btn-reset-filter {
+  background: #ce1212;
+  border: 0;
+  padding: 10px 15px;
+  color: #fff;
+  transition: 0.4s;
+  border-radius: 8px;
+  height: 42px;
+}
+
+.btn-reset-filter:hover {
+  background: #ec2727;
+}
+
+#no-results-message {
+  background-color: #f5f5f5;
+  border-radius: 10px;
+  padding: 30px;
+  font-size: 18px;
+  color: #666;
+}
+
+/* 咖啡廳詳細資訊視窗樣式 */
+.cafe-modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 9999;
+  overflow-y: auto;
+}
+
+.cafe-modal-content {
+  position: relative;
+  background-color: #fff;
+  margin: 5% auto;
+  width: 80%;
+  max-width: 800px;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  animation: modalFadeIn 0.4s;
+}
+
+@keyframes modalFadeIn {
+  from { opacity: 0; transform: translateY(-30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.cafe-modal-header {
+  position: relative;
+  height: 300px;
+  overflow: hidden;
+}
+
+.cafe-modal-header img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.cafe-modal-close {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  width: 35px;
+  height: 35px;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 20px;
+  transition: all 0.3s;
+  border: none;
+  color: #333;
+  z-index: 1;
+}
+
+.cafe-modal-close:hover {
+  background: #fff;
+  transform: rotate(90deg);
+}
+
+.cafe-modal-body {
+  padding: 30px;
+}
+
+.cafe-modal-title {
+  margin-bottom: 20px;
+  color: #333;
+  font-weight: 700;
+}
+
+.cafe-modal-subtitle {
+  color: #ce1212;
+  font-weight: 600;
+  margin-top: 25px;
+  margin-bottom: 15px;
+}
+
+.cafe-detail {
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center; /* 確保圖標和文字垂直居中 */
+}
+
+.cafe-detail i {
+  color: #ce1212;
+  width: 30px;
+  min-width: 30px; /* 確保圖標固定寬度 */
+  margin-right: 10px;
+  font-size: 18px;
+  display: inline-block; /* 確保圖標正確顯示 */
+}
+
+.cafe-detail span {
+  display: inline-block; /* 確保文字顯示 */
+  color: #333; /* 確保文字顯色 */
+  font-size: 14px; /* 設置合適的字體大小 */
+  flex: 1; /* 讓文字佔用剩餘空間 */
+  word-break: break-word; /* 確保長文字正確換行 */
+}
+
+.cafe-gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.cafe-gallery img {
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.cafe-gallery img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.cafe-modal-footer {
+  padding: 15px 30px;
+  text-align: center;
+  border-top: 1px solid #eee;
+}
+
+.cafe-directions {
+  display: inline-block;
+  padding: 12px 30px;
+  background-color: #ce1212;
+  color: #fff;
+  border-radius: 30px;
+  text-decoration: none;
+  transition: all 0.3s;
+}
+
+.cafe-directions:hover {
+  background-color: #ec2727;
+  transform: translateY(-2px);
+}
+
+/* 響應式調整 */
+@media (max-width: 768px) {
+  .cafe-modal-content {
+    width: 95%;
+    margin: 10% auto;
+  }
+  
+  .cafe-modal-header {
+    height: 200px;
+  }
+  
+  .cafe-gallery {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+  </style>
+
+  <script>
+    window.__FIREBASE_DEFAULTS__ = { 
+      skipAutoInitialization: true 
+    };
+  </script>
+
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-analytics-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-database-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-storage-compat.js"></script>
+
+  <script>
+    // 初始化 Firebase
+    const firebaseConfig = {
+      apiKey: "AIzaSyA1QnO11S6ctTWmmcQkNq1thyU0JLveG6A",
+      authDomain: "game-36d1d.firebaseapp.com",
+      databaseURL: "https://game-36d1d-default-rtdb.firebaseio.com",
+      projectId: "game-36d1d",
+      storageBucket: "game-36d1d.appspot.com", 
+      messagingSenderId: "892300779317",
+      appId: "1:892300779317:web:ea040b71275577c91bf67c",
+      measurementId: "G-FQR80H5XNL"
+    };
+
+    // 初始化 Firebase
+    firebase.initializeApp(firebaseConfig);
+    const analytics = firebase.analytics();
+    const db = firebase.database();
+    const storage = firebase.storage();
+    
+    // 處理表單提交
+    document.addEventListener('DOMContentLoaded', function() {
+      console.log('DOM 載入完成');
+      
+      const feedbackForm = document.querySelector('form.php-email-form');
+      if (feedbackForm) {
+        console.log('找到表單');
+        
+        feedbackForm.addEventListener('submit', async function(e) {
+          e.preventDefault();
+          
+          // 獲取表單資料
+          const cafeName = document.getElementById('cafe-name').value;
+          const feedback = document.getElementById('feedback').value;
+          const photoURL = document.getElementById('photo-url').value; // 直接使用用戶提供的 URL
+          const currentDate = new Date().toISOString().split('T')[0];
+          
+          try {
+            // 將資料寫入 Realtime Database
+            const feedbackRef = firebase.database().ref('feedback');
+            await feedbackRef.push({
+              cafeName: cafeName,
+              currentDate: currentDate,
+              feedback: feedback,
+              photoFile: photoURL,
+              timestamp: new Date().toISOString()
+            });
+            
+            alert('心得已成功提交！');
+            feedbackForm.reset();
+            loadFeedbackRecords();
+          } catch (error) {
+            console.error('提交心得時發生錯誤:', error);
+            alert(`提交失敗: ${error.message}`);
+          }
+        });
+      }
+      
+      loadFeedbackRecords();
+    });
+
+    // 從 Firebase 載入心得紀錄
+    // 從 Firebase 載入心得紀錄
+// 全域變數儲存心得資料
+let allFeedbackRecords = [];
+
+// 從 Firebase 載入心得紀錄
+function loadFeedbackRecords() {
+  const recordsContainer = document.getElementById('records-container');
+  if (!recordsContainer) {
+    console.error('找不到心得記錄容器');
+    return;
+  }
+  
+  const feedbackRef = firebase.database().ref('feedback');
+  feedbackRef.on('value', (snapshot) => {
+    if (!snapshot.exists()) {
+      showNoRecordsMessage();
+      return;
+    }
+    
+    const data = snapshot.val();
+    allFeedbackRecords = Object.entries(data).map(([key, value]) => ({
+      id: key,
+      ...value
+    })).sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+    
+    // 應用當前篩選條件
+    applyFilters();
+    
+    // 綁定篩選器事件
+    setupFilters();
+  });
+}
+
+// 設定篩選器事件監聽
+function setupFilters() {
+  // 只設定一次事件監聽
+  if (!window.filtersInitialized) {
+    const cafeFilter = document.getElementById('cafe-filter');
+    const dateFilter = document.getElementById('date-filter');
+    const resetButton = document.getElementById('reset-filters');
+    
+    if (cafeFilter && dateFilter && resetButton) {
+      cafeFilter.addEventListener('change', applyFilters);
+      dateFilter.addEventListener('change', applyFilters);
+      resetButton.addEventListener('click', resetFilters);
+      window.filtersInitialized = true;
+    }
+  }
+}
+
+// 重設篩選條件
+function resetFilters() {
+  const cafeFilter = document.getElementById('cafe-filter');
+  const dateFilter = document.getElementById('date-filter');
+  
+  if (cafeFilter && dateFilter) {
+    cafeFilter.value = 'all';
+    dateFilter.value = '';
+    applyFilters();
+  }
+}
+
+// 應用篩選條件
+function applyFilters() {
+  const cafeFilter = document.getElementById('cafe-filter');
+  const dateFilter = document.getElementById('date-filter');
+  const recordsContainer = document.getElementById('records-container');
+  
+  if (!cafeFilter || !dateFilter || !recordsContainer) {
+    console.error('找不到篩選器或記錄容器元素');
+    return;
+  }
+  
+  const selectedCafe = cafeFilter.value;
+  const selectedDate = dateFilter.value; // 格式為 "YYYY-MM"
+  
+  // 篩選記錄
+  let filteredRecords = [...allFeedbackRecords];
+  
+  if (selectedCafe !== 'all') {
+    filteredRecords = filteredRecords.filter(record => record.cafeName === selectedCafe);
+  }
+  
+  if (selectedDate) {
+    filteredRecords = filteredRecords.filter(record => {
+      // 將記錄日期轉為 YYYY-MM 格式進行比較
+      const recordDate = record.currentDate.substring(0, 7); // 假設格式為 "YYYY-MM-DD"
+      return recordDate === selectedDate;
+    });
+  }
+  
+  // 更新顯示
+  if (filteredRecords.length === 0) {
+    showNoRecordsMessage();
+  } else {
+    showFilteredRecords(filteredRecords);
+  }
+}
+
+// 顯示沒有記錄的訊息
+function showNoRecordsMessage() {
+  const recordsContainer = document.getElementById('records-container');
+  const noResultsMessage = document.getElementById('no-results-message');
+  
+  if (recordsContainer && noResultsMessage) {
+    recordsContainer.innerHTML = '';
+    noResultsMessage.style.display = 'block';
+    
+    // 銷毀輪播
+    if (window.recordCarousel) {
+      window.recordCarousel.destroy();
+    }
+  }
+}
+
+// 顯示篩選後的記錄
+function showFilteredRecords(records) {
+  const recordsContainer = document.getElementById('records-container');
+  const noResultsMessage = document.getElementById('no-results-message');
+  
+  if (recordsContainer && noResultsMessage) {
+    recordsContainer.innerHTML = '';
+    noResultsMessage.style.display = 'none';
+    
+    records.forEach(item => {
+      const recordHTML = `
+        <div class="swiper-slide">
+          <div class="record-item">
+            <img src="${item.photoFile || 'assets/img/user-feedback/default.jpg'}" class="record-img img-fluid" alt="使用者照片">
+            <div class="record-content">
+              <h4>${item.cafeName}</h4>
+              <p class="user-feedback">${item.feedback}</p>
+              <p class="date">心得日期：${item.currentDate}</p>
+              <div class="record-actions">
+                <button class="btn btn-sm delete-record" data-id="${item.id}">
+                  <i class="bi bi-trash"></i> 刪除
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      `;
+      recordsContainer.innerHTML += recordHTML;
+    });
+    
+    // 初始化輪播
+    initRecordCarousel();
+    
+    // 綁定刪除按鈕點擊事件
+    document.querySelectorAll('.delete-record').forEach(button => {
+      button.addEventListener('click', function() {
+        const recordId = this.getAttribute('data-id');
+        deleteRecord(recordId);
+      });
+    });
+  }
+}
+
+// 初始化輪播功能
+  function initRecordCarousel() {
+    // 如果已存在輪播實例，先銷毀
+    if (window.recordCarousel) {
+      window.recordCarousel.destroy();
+    }
+    
+    // 創建新的 Swiper 實例
+    window.recordCarousel = new Swiper('.record-carousel', {
+      slidesPerView: 1,
+      spaceBetween: 20,
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+      breakpoints: {
+        // 當視窗寬度 >= 640px
+        640: {
+          slidesPerView: 1,
+          spaceBetween: 20,
+        },
+        // 當視窗寬度 >= 768px
+        768: {
+          slidesPerView: 2,
+          spaceBetween: 30,
+        },
+        // 當視窗寬度 >= 1024px
+        1024: {
+          slidesPerView: 3,
+          spaceBetween: 30,
+        },
+      }
+    });
+  }
+
+    // 添加新的刪除函數
+    function deleteRecord(recordId) {
+      if (!recordId) {
+        console.error('刪除失敗：缺少記錄 ID');
+        return;
+      }
+      
+      // 顯示確認對話框
+      if (confirm('確定要刪除這筆心得紀錄嗎？此操作無法恢復。')) {
+        const recordRef = firebase.database().ref(`feedback/${recordId}`);
+        
+        recordRef.remove()
+          .then(() => {
+            console.log('心得記錄已成功刪除');
+            // 刪除成功訊息通知
+            alert('心得記錄已成功刪除！');
+          })
+          .catch(error => {
+            console.error('刪除記錄時發生錯誤:', error);
+            alert(`刪除失敗: ${error.message}`);
+          });
+      }
+    }
+
+    // 添加備用推薦函數
+    function getFallbackRecommendation(query) {
+      console.log("使用備用推薦回覆...");
+      
+      // 預設回覆列表
+      const recommendations = [
+        "根據您的需求，我推薦以下咖啡廳：\n\n1. 裕樹咖啡館 - 提供寬敞的座位區，環境安靜，適合閱讀和工作。位於中壢區中大路300號。\n\n2. 拾午gatherdelicious - 老宅改建的咖啡廳，提供自烘咖啡豆、手工甜點和多樣化的主餐。位於中壢區中央西路二段30號。",
+        "為您推薦以下咖啡廳：\n\n1. 時常咖啡 - 法式復古風格，環境寧靜，適合閱讀或工作。位於中壢區中央東路88號。\n\n2. Dute coffee & bar - 提供各式甜點，如雪崩蛋糕和千層蛋糕，搭配精緻的咖啡飲品。位於中壢區慈惠三街102號。",
+        "推薦您嘗試：\n\n1. B咖珈琲 - 位於新明市場二樓，營造出隱密且安靜的氛圍。夜間營業，適合夜貓子。位於中壢區新明路182號。\n\n2. 小舊閣樓 Glow - 老宅改建的咖啡廳，環境懷舊且溫馨。營業至深夜。位於中壢區慈惠三街40號。"
+      ];
+      
+      // 簡單的字詞匹配來選擇合適的推薦
+      if (query.includes("讀書") || query.includes("安靜") || query.includes("工作")) {
+        return recommendations[0];
+      } else if (query.includes("甜點") || query.includes("好吃") || query.includes("美食")) {
+        return recommendations[1];
+      } else if (query.includes("深夜") || query.includes("夜間") || query.includes("夜貓")) {
+        return recommendations[2];
+      } else {
+        // 隨機返回一個推薦
+        return recommendations[Math.floor(Math.random() * recommendations.length)];
+      }
+    }
+  </script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // AI 助手按鈕和對話框
+      const aiBtn = document.getElementById('aiAssistantBtn');
+      const aiDialog = document.getElementById('aiAssistantDialog');
+      const aiClose = document.getElementById('aiAssistantClose');
+      const aiBody = document.getElementById('aiAssistantBody');
+      const aiInput = document.getElementById('aiAssistantInput');
+      const aiSend = document.getElementById('aiAssistantSend');
+      
+      // Gemini API 密鑰
+      const API_KEY = 'AIzaSyBrtYwkI02iM8sNCMzgEEl5IhEEUzrpj2c';
+      
+      // 初始歡迎訊息
+      const welcomeMessage = "您好！我是咖啡廳推薦助手。請告訴我您喜歡什麼風格的咖啡廳、位置偏好或其他需求，我將為您推薦合適的選擇。";
+      
+      // 打開/關閉對話框
+      aiBtn.addEventListener('click', function() {
+        aiDialog.style.display = 'flex';
+        
+        // 如果對話框是空的，添加歡迎訊息
+        if (aiBody.children.length === 0) {
+          addAIMessage(welcomeMessage);
+        }
+      });
+      
+      aiClose.addEventListener('click', function() {
+        aiDialog.style.display = 'none';
+      });
+      
+      // 發送訊息
+      function sendMessage() {
+        const message = aiInput.value.trim();
+        if (message === '') return;
+        
+        // 添加用戶訊息到對話框
+        addUserMessage(message);
+        aiInput.value = '';
+        
+        // 顯示思考中動畫
+        const thinkingElement = document.createElement('div');
+        thinkingElement.className = 'ai-thinking';
+        thinkingElement.innerHTML = '<span></span><span></span><span></span>';
+        aiBody.appendChild(thinkingElement);
+        
+        // 確保訊息區域滾動到底部
+        aiBody.scrollTop = aiBody.scrollHeight;
+        
+        // 使用本地備用推薦而不是調用 API
+        setTimeout(() => {
+          // 移除思考中動畫
+          if (thinkingElement && thinkingElement.parentNode === aiBody) {
+            aiBody.removeChild(thinkingElement);
+          }
+          
+          // 使用備用回應
+          const response = getFallbackRecommendation(message);
+          addAIMessage(response);
+        }, 1500);
+      }
+      
+      // 點擊發送按鈕或按 Enter 鍵發送訊息
+      aiSend.addEventListener('click', sendMessage);
+      aiInput.addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+          sendMessage();
+        }
+      });
+      
+      // 添加用戶訊息到對話框
+      function addUserMessage(message) {
+        const messageElement = document.createElement('div');
+        messageElement.className = 'user-message';
+        messageElement.textContent = message;
+        aiBody.appendChild(messageElement);
+        
+        // 確保訊息區域滾動到底部
+        aiBody.scrollTop = aiBody.scrollHeight;
+      }
+      
+      // 添加 AI 訊息到對話框
+      function addAIMessage(message) {
+        const messageElement = document.createElement('div');
+        messageElement.className = 'ai-message';
+        messageElement.textContent = message;
+        aiBody.appendChild(messageElement);
+        
+        // 確保訊息區域滾動到底部
+        aiBody.scrollTop = aiBody.scrollHeight;
+      }
+      
+      // 讓 AI 助手按鈕可拖動
+      let isDragging = false;
+      let offsetX, offsetY;
+      
+      aiBtn.addEventListener('mousedown', function(e) {
+        isDragging = true;
+        offsetX = e.clientX - aiBtn.getBoundingClientRect().left;
+        offsetY = e.clientY - aiBtn.getBoundingClientRect().top;
+      });
+      
+      document.addEventListener('mousemove', function(e) {
+        if (!isDragging) return;
+        
+        // 防止點擊事件觸發
+        e.preventDefault();
+        
+        // 計算新位置
+        const x = e.clientX - offsetX;
+        const y = e.clientY - offsetY;
+        
+        // 確保按鈕不會超出視窗範圍
+        const maxX = window.innerWidth - aiBtn.offsetWidth;
+        const maxY = window.innerHeight - aiBtn.offsetHeight;
+        
+        aiBtn.style.left = Math.min(Math.max(0, x), maxX) + 'px';
+        aiBtn.style.top = Math.min(Math.max(0, y), maxY) + 'px';
+        aiBtn.style.right = 'auto';
+      });
+      
+      document.addEventListener('mouseup', function() {
+        isDragging = false;
+      });
+      
+      // 支援觸控設備
+      aiBtn.addEventListener('touchstart', function(e) {
+        isDragging = true;
+        offsetX = e.touches[0].clientX - aiBtn.getBoundingClientRect().left;
+        offsetY = e.touches[0].clientY - aiBtn.getBoundingClientRect().top;
+      });
+      
+      document.addEventListener('touchmove', function(e) {
+        if (!isDragging) return;
+        
+        // 防止滾動
+        e.preventDefault();
+        
+        // 計算新位置
+        const x = e.touches[0].clientX - offsetX;
+        const y = e.touches[0].clientY - offsetY;
+        
+        // 確保按鈕不會超出視窗範圍
+        const maxX = window.innerWidth - aiBtn.offsetWidth;
+        const maxY = window.innerHeight - aiBtn.offsetHeight;
+        
+        aiBtn.style.left = Math.min(Math.max(0, x), maxX) + 'px';
+        aiBtn.style.top = Math.min(Math.max(0, y), maxY) + 'px';
+        aiBtn.style.right = 'auto';
+      });
+      
+      document.addEventListener('touchend', function() {
+        isDragging = false;
+      });
+    });
+  </script>
+</head>
+
+<body class="index-page">
+
+  <header id="header" class="header d-flex align-items-center sticky-top">
+    <div class="container position-relative d-flex align-items-center justify-content-between">
+  
+      <a href="index.html" class="logo d-flex align-items-center me-auto me-xl-0">
+        <!-- Uncomment the line below if you also wish to use an image logo -->
+        <!-- <img src="assets/img/logo.png" alt=""> -->
+        <h1 class="sitename">Cafee</h1>
+        <span>.</span>
+      </a>
+  
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="#hero" class="active">Home<br></a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#menu">分類</a></li>
+          <li><a href="#news">公告</a></li>
+          <li><a href="#user-feedback">心得紀錄</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+  
+    </div>
+  </header>
+
+  <main class="main">
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero section light-background">
+      <div class="container">
+        <div class="row gy-4 justify-content-center justify-content-lg-between">
+          <!-- 左側文字內容 -->
+          <div class="col-lg-6 order-2 order-lg-1 d-flex flex-column justify-content-center">
+            <h1 data-aos="fade-up">探索中壢<br>-咖啡廳專業指南</h1>
+            <p data-aos="fade-up" data-aos-delay="100">品味咖啡香，享受悠閒時光。</p>
+            <div class="d-flex" data-aos="fade-up" data-aos-delay="200">
+              <a href="#about" class="btn-get-started">了解更多</a>
+            </div>
+          </div>
+          <!-- 右側圖片 -->
+          <div class="col-lg-6 order-1 order-lg-2 hero-img text-center" data-aos="zoom-out">
+            <img src="assets/img/hero-img.png" class="img-fluid animated" alt="中壢咖啡廳">
+          </div>
+        </div>
+      </div>
+    </section><!-- /Hero Section -->
+
+    <!-- About Section -->
+    <section id="about" class="about section">
+      <div class="container">
+        <!-- Section Title -->
+        <div class="section-title text-center" data-aos="fade-up">
+          <h2>關於我們</h2>
+          <p><span>探索</span> <span class="description-title">中壢的咖啡文化</span></p>
+          <p class="subtitle">我們致力於為您提供最舒適的咖啡體驗，無論是學習、聚會還是放鬆時光。</p>
+        </div><!-- End Section Title -->
+    
+        <!-- Content -->
+        <div class="row align-items-center" data-aos="fade-up" data-aos-delay="100">
+          <!-- 圖片 -->
+          <div class="col-lg-5 text-center">
+            <img src="assets/img/about-coffee.jpg" class="img-fluid rounded shadow" alt="關於中壢咖啡廳">
+          </div>
+          <!-- 文字 -->
+          <div class="col-lg-7">
+            <div class="content">
+              <p>
+                在中壢讀書葉喜歡跑咖嗎？無論是適合讀書的安靜空間，還是提供美味甜點的咖啡廳，亦或是深夜營業的咖啡酒吧，這裡總有一個地方適合你。
+              </p>
+              <p>
+                我們精選了幾家特色咖啡廳，邀請您一起探索這座城市的咖啡魅力。無論您是咖啡愛好者，還是尋找一個放鬆的地方，中壢的咖啡廳都能滿足您的需求。
+              </p>
+              <a href="#menu" class="btn-learn-more">探索更多咖啡廳</a>
+            </div>
+          </div>
+        </div><!-- End Content -->
+      </div>
+    </section><!-- /About Section -->
+
+    <!-- Why Us Section -->
+    <section id="why-us" class="why-us section light-background">
+      <div class="container">
+        <div class="row gy-4">
+          <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
+            <div class="why-box">
+              <h3>為什麼選擇我們的推薦</h3>
+              <p>
+                我們精心挑選中壢最具特色的咖啡廳，無論是適合讀書的安靜空間、提供美味甜點的咖啡廳，還是深夜營業的咖啡酒吧，這裡總有一個地方適合您。
+                每家咖啡廳都經過實地探訪，確保為您提供最真實的資訊。
+              </p>
+              <div class="text-center">
+                <a href="#about" class="more-btn"><span>了解更多</span> <i class="bi bi-chevron-right"></i></a>
+              </div>
+            </div>
+          </div><!-- End Why Box -->
+    
+          <div class="col-lg-8 d-flex align-items-stretch">
+            <div class="row gy-4" data-aos="fade-up" data-aos-delay="200">
+    
+              <div class="col-xl-4">
+                <div class="icon-box d-flex flex-column justify-content-center align-items-center">
+                  <i class="bi bi-clipboard-data"></i>
+                  <h4>真實評價</h4>
+                  <p>我們根據用戶的實際體驗，提供真實且可靠的咖啡廳評價。</p>
+                </div>
+              </div><!-- End Icon Box -->
+    
+              <div class="col-xl-4" data-aos="fade-up" data-aos-delay="300">
+                <div class="icon-box d-flex flex-column justify-content-center align-items-center">
+                  <i class="bi bi-gem"></i>
+                  <h4>多樣選擇</h4>
+                  <p>從適合讀書的安靜咖啡廳到深夜營業的咖啡酒吧，滿足不同需求。</p>
+                </div>
+              </div><!-- End Icon Box -->
+    
+              <div class="col-xl-4" data-aos="fade-up" data-aos-delay="400">
+                <div class="icon-box d-flex flex-column justify-content-center align-items-center">
+                  <i class="bi bi-inboxes"></i>
+                  <h4>地圖導航</h4>
+                  <p>每家咖啡廳都附有 Google Maps 連結，方便您快速找到位置。</p>
+                </div>
+              </div><!-- End Icon Box -->
+    
+            </div>
+          </div>
+        </div>
+      </div>
+    </section><!-- /Why Us Section -->
+
+    <!-- Stats Section -->
+    <section id="stats" class="stats section dark-background">
+      <img src="assets/img/stats-bg.jpg" alt="" data-aos="fade-in">
+
+      <div class="container position-relative" data-aos="fade-up" data-aos-delay="100">
+        <div class="row gy-4">
+          <div class="col-lg-3 col-md-6">
+            <div class="stats-item text-center w-100 h-100">
+              <span data-purecounter-start="0" data-purecounter-end="15" data-purecounter-duration="1" class="purecounter"></span>
+              <p>推薦咖啡廳</p>
+            </div>
+          </div><!-- End Stats Item -->
+
+          <div class="col-lg-3 col-md-6">
+            <div class="stats-item text-center w-100 h-100">
+              <span data-purecounter-start="0" data-purecounter-end="120" data-purecounter-duration="1" class="purecounter"></span>
+              <p>使用者心得</p>
+            </div>
+          </div><!-- End Stats Item -->
+
+          <div class="col-lg-3 col-md-6">
+            <div class="stats-item text-center w-100 h-100">
+              <span data-purecounter-start="0" data-purecounter-end="10000" data-purecounter-duration="1" class="purecounter"></span>
+              <p>網站訪問次數</p>
+            </div>
+          </div><!-- End Stats Item -->
+
+          <div class="col-lg-3 col-md-6">
+            <div class="stats-item text-center w-100 h-100">
+              <span data-purecounter-start="0" data-purecounter-end="4.8" data-purecounter-duration="1" class="purecounter"></span>
+              <p>平均評分</p>
+            </div>
+          </div><!-- End Stats Item -->
+        </div>
+      </div>
+    </section><!-- /Stats Section -->
+
+    <!-- Menu Section -->
+    <section id="menu" class="menu section">
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2>咖啡廳分類</h2>
+        <p><span>探索</span> <span class="description-title">中壢的咖啡廳</span></p>
+      </div><!-- End Section Title -->
+    
+      <div class="container">
+        <!-- Tabs Navigation -->
+        <ul class="nav nav-tabs" id="cafeTabs" role="tablist">
+          <!-- 添加全部選項 -->
+          <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="all-tab" data-bs-toggle="tab" data-bs-target="#all-cafes" 
+                    type="button" role="tab" aria-controls="all-cafes" aria-selected="true">全部</button>
+          </li>
+          <!-- 原有分類 -->
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="study-tab" data-bs-toggle="tab" data-bs-target="#study-friendly" 
+                    type="button" role="tab" aria-controls="study-friendly" aria-selected="false">讀書咖啡廳</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="dessert-tab" data-bs-toggle="tab" data-bs-target="#delicious" 
+                    type="button" role="tab" aria-controls="delicious" aria-selected="false">甜點咖啡廳</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="night-tab" data-bs-toggle="tab" data-bs-target="#late-night" 
+                    type="button" role="tab" aria-controls="late-night" aria-selected="false">夜間咖啡廳</button>
+          </li>
+        </ul>
+    
+        <!-- Tabs Content -->
+        <div class="tab-content" data-aos="fade-up" data-aos-delay="200">
+          <!-- 全部咖啡廳 -->
+          <div class="tab-pane fade show active" id="all-cafes" role="tabpanel" aria-labelledby="all-tab">
+            <div class="row gy-5">
+              <!-- 讀書咖啡廳 -->
+              <div class="col-lg-4 menu-item">
+                <img src="assets/img/cafes/study-1.jpg" class="menu-img img-fluid" alt="適合讀書 1">
+                <h4><a href="https://maps.app.goo.gl/RS9rrijMrXexkW9j8" target="_blank" rel="noopener noreferrer">裕樹咖啡館</a></h4>
+                <p class="ingredients">特色：提供寬敞的座位區，環境安靜，適合閱讀和工作</p>
+                <p class="ingredients">設施：免費 Wi-Fi、插座。</p>
+              </div>
+              <div class="col-lg-4 menu-item">
+                <img src="assets/img/cafes/study-2.jpg" class="menu-img img-fluid" alt="適合讀書 2">
+                <h4><a href="https://maps.app.goo.gl/PN4WkpHocajVXTwG7" target="_blank" rel="noopener noreferrer">時常咖啡</a></h4>
+                <p class="ingredients">特色：法式復古風格，環境寧靜，適合閱讀或工作</p>
+                <p class="ingredients">設施：提供免費Wi-Fi</p>
+              </div>
+              
+              <!-- 甜點咖啡廳 -->
+              <div class="col-lg-4 menu-item">
+                <img src="assets/img/cafes/delicious-1.jpg" class="menu-img img-fluid" alt="好吃 1">
+                <h4><a href="https://maps.app.goo.gl/PN4WkpHocajVXTwG7" target="_blank" rel="noopener noreferrer">拾午gatherdelicious</a></h4>
+                <p class="ingredients">特色：老宅改建的咖啡廳，提供自烘咖啡豆、手工甜點和多樣化的主餐，如漢堡、三明治、咖哩和牛排等。</p>
+              </div>
+              <div class="col-lg-4 menu-item">
+                <img src="assets/img/cafes/delicious-2.jpg" class="menu-img img-fluid" alt="好吃 2">
+                <h4><a href="https://maps.app.goo.gl/sfJc9Cupdg4UFSb77" target="_blank" rel="noopener noreferrer">Dute coffee & bar</a></h4>
+                <p class="ingredients">特色：提供各式甜點，如雪崩蛋糕和千層蛋糕，搭配精緻的咖啡飲品。</p>
+              </div>
+              
+              <!-- 夜間咖啡廳 -->
+              <div class="col-lg-4 menu-item">
+                <img src="assets/img/cafes/late-night-1.jpg" class="menu-img img-fluid" alt="深夜咖啡 1">
+                <h4><a href="https://maps.app.goo.gl/3GD8fXWVnqqCNdqH6" target="_blank" rel="noopener noreferrer">B咖珈琲</a></h4>
+                <p class="ingredients">位於新明市場二樓，營造出隱密且安靜的氛圍。</p>
+              </div>
+              <div class="col-lg-4 menu-item">
+                <img src="assets/img/cafes/late-night-2.jpg" class="menu-img img-fluid" alt="深夜咖啡 2">
+                <h4><a href="https://maps.app.goo.gl/9BVN1oKq2VH8KdrK6" target="_blank" rel="noopener noreferrer">小舊閣樓 Glow</a></h4>
+                <p class="ingredients">老宅改建的咖啡廳，環境懷舊且溫馨。</p>
+              </div>
+            </div>
+          </div>
+          
+          <!-- 適合讀書 -->
+          <div class="tab-pane fade" id="study-friendly" role="tabpanel" aria-labelledby="study-tab">
+            <div class="row gy-5">
+              <div class="col-lg-4 menu-item">
+                <img src="assets/img/cafes/study-1.jpg" class="menu-img img-fluid" alt="適合讀書 1">
+                <h4><a href="https://maps.app.goo.gl/RS9rrijMrXexkW9j8" target="_blank" rel="noopener noreferrer">裕樹咖啡館</a></h4>
+                <p class="ingredients">特色：提供寬敞的座位區，環境安靜，適合閱讀和工作</p>
+                <p class="ingredients">設施：免費 Wi-Fi、插座。</p>
+              </div>
+              <div class="col-lg-4 menu-item">
+                <img src="assets/img/cafes/study-2.jpg" class="menu-img img-fluid" alt="適合讀書 2">
+                <h4><a href="https://maps.app.goo.gl/PN4WkpHocajVXTwG7" target="_blank" rel="noopener noreferrer">時常咖啡</a></h4>
+                <p class="ingredients">特色：法式復古風格，環境寧靜，適合閱讀或工作</p>
+                <p class="ingredients">設施：提供免費Wi-Fi</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- 好吃 -->
+          <div class="tab-pane fade" id="delicious" role="tabpanel" aria-labelledby="dessert-tab">
+            <div class="row gy-5">
+              <div class="col-lg-4 menu-item">
+                <img src="assets/img/cafes/delicious-1.jpg" class="menu-img img-fluid" alt="好吃 1">
+                <h4><a href="https://maps.app.goo.gl/PN4WkpHocajVXTwG7" target="_blank" rel="noopener noreferrer">拾午gatherdelicious</a></h4>
+                <p class="ingredients">特色：老宅改建的咖啡廳，提供自烘咖啡豆、手工甜點和多樣化的主餐，如漢堡、三明治、咖哩和牛排等。</p>
+              </div>
+              <div class="col-lg-4 menu-item">
+                <img src="assets/img/cafes/delicious-2.jpg" class="menu-img img-fluid" alt="好吃 2">
+                <h4><a href="https://maps.app.goo.gl/sfJc9Cupdg4UFSb77" target="_blank" rel="noopener noreferrer">Dute coffee & bar</a></h4>
+                <p class="ingredients">特色：提供各式甜點，如雪崩蛋糕和千層蛋糕，搭配精緻的咖啡飲品。</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- 深夜咖啡 -->
+          <div class="tab-pane fade" id="late-night" role="tabpanel" aria-labelledby="night-tab">
+            <div class="row gy-5">
+              <div class="col-lg-4 menu-item">
+                <img src="assets/img/cafes/late-night-1.jpg" class="menu-img img-fluid" alt="深夜咖啡 1">
+                <h4><a href="https://maps.app.goo.gl/3GD8fXWVnqqCNdqH6" target="_blank" rel="noopener noreferrer">B咖珈琲</a></h4>
+                <p class="ingredients">位於新明市場二樓，營造出隱密且安靜的氛圍。</p>
+              </div>
+              <div class="col-lg-4 menu-item">
+                <img src="assets/img/cafes/late-night-2.jpg" class="menu-img img-fluid" alt="深夜咖啡 2">
+                <h4><a href="https://maps.app.goo.gl/9BVN1oKq2VH8KdrK6" target="_blank" rel="noopener noreferrer">小舊閣樓 Glow</a></h4>
+                <p class="ingredients">老宅改建的咖啡廳，環境懷舊且溫馨。</p>
+              </div>
+            </div>
+          </div><!-- End Starter Menu Content -->
+        </div>
+      </div>
+    </section><!-- /Menu Section -->
+
+    <!-- Testimonials Section -->
+    <section id="news" class="news section light-background">
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2>最新消息</h2>
+        <p><span>各個咖啡廳的</span> <span class="description-title">優惠與公告</span></p>
+      </div><!-- End Section Title -->
+    
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+        <div class="news-scroll">
+          <!-- 最新消息項目 1 -->
+          <div class="news-item">
+            <h4>裕樹咖啡館</h4>
+            <p>本週五（4/20）全場飲品買一送一，僅限內用。</p>
+            <p class="date">公告日期：2025/04/17</p>
+          </div>
+    
+          <!-- 最新消息項目 2 -->
+          <div class="news-item">
+            <h4>時常咖啡</h4>
+            <p>因設備維修，4/22（週一）暫停營業一天，敬請見諒。</p>
+            <p class="date">公告日期：2025/04/16</p>
+          </div>
+    
+          <!-- 最新消息項目 3 -->
+          <div class="news-item">
+            <h4>夜貓咖啡</h4>
+            <p>推出全新深夜套餐，晚間 9 點後享 8 折優惠！</p>
+            <p class="date">公告日期：2025/04/15</p>
+          </div>
+    
+          <!-- 更多消息項目 -->
+          <div class="news-item">
+            <h4>咖啡時光</h4>
+            <p>4/18 至 4/20，所有甜點享 7 折優惠！</p>
+            <p class="date">公告日期：2025/04/14</p>
+          </div>
+        </div>
+      </div>
+    </section><!-- /Testimonials Section -->
+
+    <!-- User Feedback Section -->
+    <section id="user-feedback" class="user-feedback section light-background">
+      <div class="container">
+        <!-- Section Title -->
+        <div class="section-title text-center" data-aos="fade-up">
+          <h2>分享您的心得</h2>
+          <p><span>留下</span> <span class="description-title">您對咖啡廳的體驗</span></p>
+        </div><!-- End Section Title -->
+    
+        <!-- Feedback Form -->
+        <div class="row justify-content-center" data-aos="fade-up" data-aos-delay="100">
+          <div class="col-lg-8">
+            <form class="php-email-form">
+              <div class="form-group">
+                <label for="cafe-name">咖啡廳名稱</label>
+                <select id="cafe-name" name="cafe-name" class="form-control" required>
+                  <option value="" disabled selected>請選擇咖啡廳</option>
+                  <option value="裕樹咖啡館">裕樹咖啡館</option>
+                  <option value="時常咖啡">時常咖啡</option>
+                  <option value="夜貓咖啡">夜貓咖啡</option>
+                  <option value="拾午gatherdelicious">拾午gatherdelicious</option>
+                  <option value="Dute coffee & bar">Dute coffee & bar</option>
+                  <option value="B咖珈琲">B咖珈琲</option>
+                  <option value="小舊閣樓 Glow">小舊閣樓 Glow</option>
+                  <option value="其他">其他</option>
+                </select>
+              </div>
+    
+              <div class="form-group">
+                <label for="feedback">當天心得</label>
+                <textarea id="feedback" name="feedback" rows="5" class="form-control" placeholder="請輸入您的心得..." required></textarea>
+              </div>
+    
+              <div class="form-group">
+                <label for="photo-url">照片連結</label>
+                <input type="url" id="photo-url" name="photo-url" class="form-control" 
+                      placeholder="請輸入照片連結 (例如：https://example.com/image.jpg)" required>
+                <small class="form-text text-muted">您可以上傳圖片到 <a href="https://imgur.com" target="_blank">Imgur</a> 或其他圖片託管服務，然後貼上連結</small>
+              </div>
+    
+              <div class="text-center">
+                <button type="submit" class="btn-submit-feedback">提交心得</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section><!-- /User Feedback Section -->
+
+    <!-- User Records Section -->
+<!-- User Records Section -->
+<section id="user-records" class="user-records section light-background">
+  <!-- Section Title -->
+  <div class="container section-title" data-aos="fade-up">
+    <h2>使用者心得紀錄</h2>
+    <p><span>查看</span> <span class="description-title">我的心得紀錄</span></p>
+  </div><!-- End Section Title -->
+
+  <!-- 篩選器控制項 -->
+  <div class="container filter-container mb-4" data-aos="fade-up">
+    <div class="row justify-content-center">
+      <div class="col-md-4 mb-3">
+        <label for="cafe-filter">咖啡廳篩選</label>
+        <select id="cafe-filter" class="form-select">
+          <option value="all">全部咖啡廳</option>
+          <option value="裕樹咖啡館">裕樹咖啡館</option>
+          <option value="時常咖啡">時常咖啡</option>
+          <option value="拾午gatherdelicious">拾午gatherdelicious</option>
+          <option value="Dute coffee & bar">Dute coffee & bar</option>
+          <option value="B咖珈琲">B咖珈琲</option>
+          <option value="小舊閣樓 Glow">小舊閣樓 Glow</option>
+        </select>
+      </div>
+      <div class="col-md-4 mb-3">
+        <label for="date-filter">日期篩選</label>
+        <input type="month" id="date-filter" class="form-control">
+      </div>
+      <div class="col-md-2 d-flex align-items-end mb-3">
+        <button id="reset-filters" class="btn-reset-filter w-100">重設篩選</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="container" data-aos="fade-up" data-aos-delay="100">
+    <!-- Swiper 輪播卡片容器 -->
+    <div class="record-carousel swiper">
+      <div class="swiper-wrapper" id="records-container">
+        <!-- 心得卡片將由 JavaScript 動態生成 -->
+      </div>
+      <div class="swiper-pagination"></div>
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
+    </div>
+    <div id="no-results-message" class="text-center py-5" style="display: none;">
+      <p>沒有符合篩選條件的心得記錄。</p>
+    </div>
+  </div>
+</section><!-- /User Records Section -->
+
+    <!-- AI 咖啡廳助手按鈕 -->
+    <div class="ai-assistant-btn" id="aiAssistantBtn">
+      <i class="bi bi-robot"></i>
+    </div>
+
+    <!-- AI 助手對話框 -->
+    <div class="ai-assistant-dialog" id="aiAssistantDialog">
+      <div class="ai-assistant-header">
+        <h3>咖啡廳推薦助手</h3>
+        <button class="ai-assistant-close" id="aiAssistantClose">&times;</button>
+      </div>
+      <div class="ai-assistant-body" id="aiAssistantBody">
+        <!-- 訊息將在這裡動態添加 -->
+      </div>
+      <div class="ai-assistant-input">
+        <input type="text" id="aiAssistantInput" placeholder="請告訴我您想要什麼樣的咖啡廳...">
+        <button id="aiAssistantSend"><i class="bi bi-send"></i></button>
+      </div>
+    </div>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact section">
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Contact</h2>
+        <p><span>Need Help?</span> <span class="description-title">Contact Us</span></p>
+      </div><!-- End Section Title -->
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+        <div class="row gy-4">
+          <div class="col-md-6">
+            <div class="info-item d-flex align-items-center" data-aos="fade-up" data-aos-delay="200">
+              <i class="icon bi bi-geo-alt flex-shrink-0"></i>
+              <div>
+                <h3>Address</h3>
+                <p>A108 Adam Street, New York, NY 535022</p>
+              </div>
+            </div>
+          </div><!-- End Info Item -->
+
+          <div class="col-md-6">
+            <div class="info-item d-flex align-items-center" data-aos="fade-up" data-aos-delay="300">
+              <i class="icon bi bi-telephone flex-shrink-0"></i>
+              <div>
+                <h3>Call Us</h3>
+                <p>+1 5589 55488 55</p>
+              </div>
+            </div>
+          </div><!-- End Info Item -->
+
+          <div class="col-md-6">
+            <div class="info-item d-flex align-items-center" data-aos="fade-up" data-aos-delay="400">
+              <i class="icon bi bi-envelope flex-shrink-0"></i>
+              <div>
+                <h3>Email Us</h3>
+                <p>info@example.com</p>
+              </div>
+            </div>
+          </div><!-- End Info Item -->
+
+          <div class="col-md-6">
+            <div class="info-item d-flex align-items-center" data-aos="fade-up" data-aos-delay="500">
+              <i class="icon bi bi-clock flex-shrink-0"></i>
+              <div>
+                <h3>Opening Hours<br></h3>
+                <p><strong>Mon-Sat:</strong> 11AM - 23PM; <strong>Sunday:</strong> Closed</p>
+              </div>
+            </div>
+          </div><!-- End Info Item -->
+        </div>
+      </div>
+    </section><!-- /Contact Section -->
+  </main>
+
+  <footer id="footer" class="footer dark-background">
+    <div class="container">
+      <div class="row gy-3">
+        <div class="col-lg-3 col-md-6 d-flex">
+          <i class="bi bi-geo-alt icon"></i>
+          <div class="address">
+            <h4>Address</h4>
+            <p>A108 Adam Street</p>
+            <p>New York, NY 535022</p>
+            <p></p>
+          </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6 d-flex">
+          <i class="bi bi-telephone icon"></i>
+          <div>
+            <h4>Contact</h4>
+            <p>
+              <strong>Phone:</strong> <span>+1 5589 55488 55</span><br>
+              <strong>Email:</strong> <span>info@example.com</span><br>
+            </p>
+          </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6 d-flex">
+          <i class="bi bi-clock icon"></i>
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+          <h4>Follow Us</h4>
+          <div class="social-links d-flex">
+            <a href="#" class="twitter"><i class="bi bi-twitter-x"></i></a>
+            <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
+            <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
+            <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container copyright text-center mt-4">
+      <p>© <span>Copyright</span> <strong class="px-1 sitename">Yummy</strong> <span>All Rights Reserved</span></p>
+      <div class="credits">
+        <!-- All the links in the footer should remain intact. -->
+        <!-- You can delete the links only if you've purchased the pro version. -->
+        <!-- Licensing information: https://bootstrapmade.com/license/ -->
+        <!-- Purchase the pro version with working PHP/AJAX contact form: [buy-url] -->
+        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+      </div>
+    </div>
+    <!-- 咖啡廳詳細資訊視窗 -->
+<div id="cafeModal" class="cafe-modal">
+  <div class="cafe-modal-content">
+    <div class="cafe-modal-header">
+      <img id="cafeModalImage" src="" alt="咖啡廳照片">
+      <button class="cafe-modal-close" onclick="closeCafeModal()">&times;</button>
+    </div>
+    <div class="cafe-modal-body">
+      <h2 id="cafeModalTitle" class="cafe-modal-title"></h2>
+      <div id="cafeModalDescription"></div>
+      
+      <h4 class="cafe-modal-subtitle">詳細資訊</h4>
+      <div id="cafeModalDetails"></div>
+      
+      <h4 class="cafe-modal-subtitle">照片集</h4>
+      <div id="cafeModalGallery" class="cafe-gallery"></div>
+    </div>
+    <div class="cafe-modal-footer">
+      <a id="cafeModalDirections" href="#" target="_blank" class="cafe-directions">
+        <i class="bi bi-geo-alt"></i> 導航前往
+      </a>
+    </div>
+  </div>
+</div>
+  </footer>
+
+  <!-- Scroll Top -->
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Preloader -->
+  <div id="preloader"></div>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+
+  <!-- Main JS File -->
+  <script src="assets/js/main.js"></script>
+  <script>
+  // 咖啡廳詳細資訊數據
+  const cafeDetails = {
+    "裕樹咖啡館": {
+      id: "yuShu",
+      images: ["assets/img/cafes/study-1.jpg", "assets/img/cafes/yuShu-1.jpg", "assets/img/cafes/yuShu-2.jpg", "assets/img/cafes/yuShu-3.jpg"],
+      description: "裕樹咖啡館是中壢區一家受學生歡迎的咖啡廳，環境寬敞明亮，座位舒適，提供穩定的Wi-Fi和充足的插座，是讀書工作的理想場所。",
+      details: [
+        { icon: "bi bi-geo-alt", text: "中壢區中大路300號" },
+        { icon: "bi bi-clock", text: "營業時間：週一至週六 09:00-21:00，週日 10:00-18:00" },
+        { icon: "bi bi-cash-coin", text: "消費價位：飲品 $70-150，輕食 $120-220" },
+        { icon: "bi bi-wifi", text: "提供免費Wi-Fi，網速穩定" },
+        { icon: "bi bi-plug", text: "每個座位區都配有充足插座" },
+        { icon: "bi bi-info-circle", text: "環境安靜，採光良好，有大面積落地窗" }
+      ],
+      mapsUrl: "https://maps.app.goo.gl/RS9rrijMrXexkW9j8"
+    },
+    "時常咖啡": {
+      id: "shiChang",
+      images: ["assets/img/cafes/study-2.jpg", "assets/img/cafes/shiChang-1.jpg", "assets/img/cafes/shiChang-2.jpg", "assets/img/cafes/shiChang-3.jpg"],
+      description: "時常咖啡是一家充滿法式風情的精品咖啡店，室內設計融合復古與現代元素，打造出優雅舒適的閱讀空間。特色為手沖單品咖啡和自製甜點。",
+      details: [
+        { icon: "bi bi-geo-alt", text: "中壢區中央東路88號" },
+        { icon: "bi bi-clock", text: "營業時間：週一至週五 10:00-22:00，週末 09:00-23:00" },
+        { icon: "bi bi-cash-coin", text: "消費價位：單品咖啡 $150-280，甜點 $80-150" },
+        { icon: "bi bi-wifi", text: "提供免費Wi-Fi" },
+        { icon: "bi bi-cup-hot", text: "推薦品項：耶加雪菲手沖咖啡、肉桂捲" },
+        { icon: "bi bi-info-circle", text: "環境安靜，適合閱讀和工作，有座位時間限制(假日3小時)" }
+      ],
+      mapsUrl: "https://maps.app.goo.gl/PN4WkpHocajVXTwG7"
+    },
+    "拾午gatherdelicious": {
+      id: "shiWu",
+      images: ["assets/img/cafes/delicious-1.jpg", "assets/img/cafes/shiWu-1.jpg", "assets/img/cafes/shiWu-2.jpg", "assets/img/cafes/shiWu-3.jpg"],
+      description: "拾午是一家老宅改建的特色咖啡館，保留原有建築特色，增添現代化設施。提供自家烘焙的咖啡豆和多樣精緻的手工甜點，主餐選擇也相當豐富。",
+      details: [
+        { icon: "bi bi-geo-alt", text: "中壢區中央西路二段30號" },
+        { icon: "bi bi-clock", text: "營業時間：週二至週日 11:00-21:00，週一公休" },
+        { icon: "bi bi-cash-coin", text: "消費價位：咖啡飲品 $120-180，主餐 $180-350，甜點 $100-180" },
+        { icon: "bi bi-cup-hot", text: "推薦品項：肉桂拿鐵、巧克力松露蛋糕、手工漢堡" },
+        { icon: "bi bi-bookmark-heart", text: "老宅空間氛圍佳，假日需提前預約" },
+        { icon: "bi bi-info-circle", text: "可包場舉辦小型活動，需提前兩週預約" }
+      ],
+      mapsUrl: "https://maps.app.goo.gl/PN4WkpHocajVXTwG7"
+    },
+    "Dute coffee & bar": {
+      id: "dute",
+      images: ["assets/img/cafes/delicious-2.jpg", "assets/img/cafes/dute-1.jpg", "assets/img/cafes/dute-2.jpg", "assets/img/cafes/dute-3.jpg"],
+      description: "Dute coffee & bar是一家結合咖啡廳與酒吧的特色店家，白天提供精緻咖啡與甜點，晚上轉型為文青酒吧。以創意甜點和雞尾酒聞名，是約會聚餐的好選擇。",
+      details: [
+        { icon: "bi bi-geo-alt", text: "中壢區慈惠三街102號" },
+        { icon: "bi bi-clock", text: "營業時間：週一至週四 12:00-22:00，週五至週日 12:00-00:00" },
+        { icon: "bi bi-cash-coin", text: "消費價位：咖啡 $130-180，甜點 $150-220，調酒 $220-380" },
+        { icon: "bi bi-cup-hot", text: "推薦品項：雪崩蛋糕、千層蛋糕、季節限定水果調酒" },
+        { icon: "bi bi-stars", text: "每週五、六晚間有現場音樂表演" },
+        { icon: "bi bi-info-circle", text: "室內裝潢美觀，適合拍照，晚間需預約" }
+      ],
+      mapsUrl: "https://maps.app.goo.gl/sfJc9Cupdg4UFSb77"
+    },
+    "B咖珈琲": {
+      id: "bKa",
+      images: ["assets/img/cafes/late-night-1.jpg", "assets/img/cafes/bKa-1.jpg", "assets/img/cafes/bKa-2.jpg", "assets/img/cafes/bKa-3.jpg"],
+      description: "B咖珈琲位於新明市場二樓，隱身於市場內部，是一家隱密且充滿氛圍的咖啡館。店內裝潢簡約現代，採用木質元素和柔和燈光，營造出溫馨且專注的環境。",
+      details: [
+        { icon: "bi bi-geo-alt", text: "中壢區新明路182號2樓" },
+        { icon: "bi bi-clock", text: "營業時間：週一至週日 14:00-02:00" },
+        { icon: "bi bi-cash-coin", text: "消費價位：咖啡 $100-180，輕食 $150-250，特調飲品 $180-250" },
+        { icon: "bi bi-cup-hot", text: "推薦品項：冰滴咖啡、肉桂奶茶、自製提拉米蘇" },
+        { icon: "bi bi-wifi", text: "提供免費Wi-Fi和充電插座，環境安靜適合夜間工作" },
+        { icon: "bi bi-info-circle", text: "提供單人座位區，適合獨自閱讀或工作，夜間人較少" }
+      ],
+      mapsUrl: "https://maps.app.goo.gl/3GD8fXWVnqqCNdqH6"
+    },
+    "小舊閣樓 Glow": {
+      id: "glow",
+      images: ["assets/img/cafes/late-night-2.jpg", "assets/img/cafes/glow-1.jpg", "assets/img/cafes/glow-2.jpg", "assets/img/cafes/glow-3.jpg"],
+      description: "小舊閣樓Glow是一家古老建築改造的特色咖啡館，保留了原有建築的懷舊風格，添加了現代化的設計元素。店內佈置溫馨且富有藝術氣息，晚間點燈後氛圍更佳。",
+      details: [
+        { icon: "bi bi-geo-alt", text: "中壢區慈惠三街40號" },
+        { icon: "bi bi-clock", text: "營業時間：週二至週日 13:00-01:00，週一公休" },
+        { icon: "bi bi-cash-coin", text: "消費價位：咖啡 $120-200，調酒 $180-280，甜點 $100-160" },
+        { icon: "bi bi-bookmark-heart", text: "特色：老宅改建，二樓設有閱讀角落和休息區" },
+        { icon: "bi bi-music-note-beamed", text: "週末晚間有駐唱表演，氣氛愜意" },
+        { icon: "bi bi-info-circle", text: "環境舒適，適合小型聚會，可提前預約包廂" }
+      ],
+      mapsUrl: "https://maps.app.goo.gl/9BVN1oKq2VH8KdrK6"
+    }
+  };
+
+  // 綁定咖啡廳卡片點擊事件
+  // 綁定咖啡廳卡片點擊事件
+document.addEventListener('DOMContentLoaded', function() {
+  console.log('DOM 載入完成，開始綁定咖啡廳點擊事件');
+  
+  const cafeTitleLinks = document.querySelectorAll('.menu-item h4 a');
+  console.log(`找到 ${cafeTitleLinks.length} 個咖啡廳連結`);
+  
+  cafeTitleLinks.forEach(link => {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      const cafeName = this.textContent.trim();
+      console.log(`點擊了咖啡廳: ${cafeName}`);
+      openCafeModal(cafeName);
+    });
+  });
+
+  // 檢查模態框元素是否存在
+  const cafeModal = document.getElementById('cafeModal');
+  if (!cafeModal) {
+    console.error('找不到咖啡廳詳細資訊視窗元素');
+  } else {
+    console.log('找到咖啡廳詳細資訊視窗元素');
+  }
+});
+
+// 打開咖啡廳詳細資訊視窗 - 修正版
+function openCafeModal(cafeName) {
+  console.log(`準備打開 ${cafeName} 的詳細資訊`);
+  
+  // 1. 確認咖啡廳數據存在
+  const cafeData = cafeDetails[cafeName];
+  if (!cafeData) {
+    console.error(`找不到咖啡廳資料: ${cafeName}`);
+    return;
+  }
+  
+  // 2. 顯示模態框並設置基本資訊
+  const modal = document.getElementById('cafeModal');
+  if (!modal) {
+    console.error('找不到模態框元素');
+    return;
+  }
+  
+  // 3. 設置標題
+  const modalTitle = document.getElementById('cafeModalTitle');
+  if (modalTitle) {
+    modalTitle.textContent = cafeName;
+    console.log(`設置標題: ${cafeName}`);
+  }
+  
+  // 4. 設置描述
+  const modalDescription = document.getElementById('cafeModalDescription');
+  if (modalDescription) {
+    modalDescription.innerHTML = `<p>${cafeData.description}</p>`;
+    console.log('設置描述成功');
+  }
+  
+  // 5. 設置詳細資訊
+  const detailsContainer = document.getElementById('cafeModalDetails');
+  if (detailsContainer) {
+    // 清空原有內容
+    detailsContainer.innerHTML = '';
+    console.log('清空詳細資訊容器');
+    
+    // 添加新內容
+    if (cafeData.details && Array.isArray(cafeData.details)) {
+      cafeData.details.forEach((detail, index) => {
+        if (detail.icon && detail.text) {
+          const detailElement = document.createElement('div');
+          detailElement.className = 'cafe-detail';
+          detailElement.innerHTML = `<i class="${detail.icon}"></i><span>${detail.text}</span>`;
+          detailsContainer.appendChild(detailElement);
+          console.log(`添加詳細資訊 ${index+1}: ${detail.text}`);
+        }
+      });
+    } else {
+      console.warn('咖啡廳詳細資訊不是陣列或不存在');
+    }
+  } else {
+    console.error('找不到詳細資訊容器');
+  }
+  
+  // 6. 最後再設置圖片，避免圖片載入問題
+  const modalImage = document.getElementById('cafeModalImage');
+  if (modalImage && cafeData.images && cafeData.images.length > 0) {
+    modalImage.onerror = function() {
+      this.src = 'assets/img/cafes/default.jpg';
+      console.warn('圖片載入失敗，使用預設圖片');
+    };
+    modalImage.src = cafeData.images[0];
+  }
+  
+  // 7. 設置相片集
+  const galleryContainer = document.getElementById('cafeModalGallery');
+  if (galleryContainer && cafeData.images && cafeData.images.length > 1) {
+    galleryContainer.innerHTML = '';
+    console.log('清空照片集容器');
+    
+    // 從索引1開始，跳過已在頭部顯示的第一張圖片
+    for (let index = 1; index < cafeData.images.length; index++) {
+      const image = cafeData.images[index];
+      const imgElement = document.createElement('img');
+      imgElement.alt = `${cafeName} 照片 ${index}`;
+      imgElement.onerror = function() {
+        this.src = 'assets/img/cafes/default.jpg';
+      };
+      imgElement.src = image;
+      galleryContainer.appendChild(imgElement);
+      console.log(`添加照片 ${index}`);
+    }
+  }
+  
+  // 8. 設置導航連結
+  const directionsLink = document.getElementById('cafeModalDirections');
+  if (directionsLink && cafeData.mapsUrl) {
+    directionsLink.href = cafeData.mapsUrl;
+  }
+  
+  // 9. 顯示模態框
+  modal.style.display = 'block';
+  document.body.style.overflow = 'hidden'; // 防止背景滾动
+  console.log('成功顯示模態框');
+}
+
+// 關閉咖啡廳詳細資訊視窗
+function closeCafeModal() {
+  const modal = document.getElementById('cafeModal');
+  if (modal) {
+    modal.style.display = 'none';
+    document.body.style.overflow = ''; // 恢復滾動
+  }
+}
+
+// 點擊視窗外部關閉
+window.onclick = function(event) {
+  const modal = document.getElementById('cafeModal');
+  if (event.target === modal) {
+    closeCafeModal();
+  }
+}
+</script>
+</body>
+</html>
